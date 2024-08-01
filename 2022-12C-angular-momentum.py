@@ -1540,7 +1540,6 @@ for i in range(iteration):
     ax_denst.scatter(x1, y1, z1, linewidth=0.5);
 
 
-# 곂쳐서 봐보기
     view_wolker2 = tf.split(sampler.sample(), npart, axis=(1))[1]
     view_wolker2 = tf.reduce_sum(view_wolker2, axis=(1))
     x2, y2, z2 = tf.split(view_wolker2, 3, axis=1)
@@ -1578,7 +1577,6 @@ print(tf.reduce_mean(energy))
 
 # print(ground_state.containment) # (If you load my model, this should be 0.011789099)
 
-# 유효한 구간 찾기
 plt.figure(figsize=(10,10))
 plt.rcParams["figure.figsize"] = (10, 10)
 check_std_array = []
@@ -1615,14 +1613,13 @@ plt.errorbar(check_x, check_y, check_e, linestyle='None', marker='', label="Ener
 plt.grid(True)
 plt.savefig("./before.png")      
 #plt.show()
-# 확대
+
 plt.errorbar(check_x, check_y, check_e, linestyle='None', marker='', label="Energy")
 
 plt.grid(True)
 plt.savefig("./after.png")       
 #plt.show()
 
-# 유효한 구간 확대
 choose_x = steps_history
 choose_y = energy_history
 plt.ylim(check_averages[-1]-check_std[-1]-3, check_averages[-3]+check_std[-3]+3) # 위의 제일 뒤에서 check_section만큼 떨어진 구간별 표춘편차로 y축 확대 위치 지정
